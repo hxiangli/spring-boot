@@ -1,4 +1,4 @@
-package com.hlfc.controller;
+package com.hlfc.springboot.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
