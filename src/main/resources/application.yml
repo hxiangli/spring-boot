@@ -1,0 +1,8 @@
+server:
+#  端口配置
+  port: 9091
+
+#beetl前缀与后缀
+#beetl:
+#   templatesPath: /views/
+#   suffix: html  此种方式controll 地址必须加入html，不采用
