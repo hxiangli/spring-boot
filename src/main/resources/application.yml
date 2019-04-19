@@ -1,8 +1,18 @@
 server:
-#  端口配置
+  #  绔彛閰嶇疆
   port: 9091
+  servlet:
+#    椤圭洰鍚嶇О
+    context-path: /spring-boot
 
-#beetl前缀与后缀
+
+#beetl鍓嶇紑涓庡悗缂�
 #beetl:
 #   templatesPath: /views/
-#   suffix: html  此种方式controll 地址必须加入html，不采用
+#   suffix: html  姝ょ鏂瑰紡controll 鍦板潃蹇呴』鍔犲叆html锛屼笉閲囩敤
+
+
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
