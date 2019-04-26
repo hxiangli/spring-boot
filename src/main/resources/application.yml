@@ -4,6 +4,18 @@ server:
   servlet:
 #    项目名称
     context-path: /spring-boot
+  tomcat:
+    accesslog:
+      buffered: true
+      directory: E:/logs
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      pattern: common
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log
 
 
 #beetl前缀与后缀
@@ -16,3 +28,11 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
+
+
+#mysql
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/security?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: 123456
