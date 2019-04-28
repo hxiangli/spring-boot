@@ -8,23 +8,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ *登录页
+ * @Author hxl
+ * @Date  2019/4/28
+ **/
 @Controller
 public class LoginController {
     private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-    @RequestMapping("/")
-    public String showHome() {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        logger.info("当前登陆用户：" + name);
-
-        return "login/home";
-    }
-
+    /**
+     * 跳转至登录页
+     * @return
+     */
     @RequestMapping("/login")
     public String showLogin() {
         return "login/login";
     }
 
+    //配置哪些角色可以访问哪些路径
     @RequestMapping("/admin")
     @ResponseBody
     @PreAuthorize("hasRole('ROLE_ADMIN')")

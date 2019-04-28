@@ -1,8 +1,12 @@
 package com.hlfc.springboot.beetl;
 
+import com.hlfc.springboot.controller.security.entity.SysUser;
 import org.beetl.core.GroupTemplate;
 import org.beetl.core.Template;
 import org.beetl.ext.web.WebRenderExt;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +26,24 @@ public class BeetlGlobalExt implements WebRenderExt {
             url = url + ctx;
         }
 
+        //项目URL
         template.binding("WEBURL", url);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+
+        if(authentication ==null){
+            return ;
+        }
+
+        Object principal =  authentication.getPrincipal();
+        if (principal == null) {
+            return ;
+        }
+
+        //当前用户
+        if (principal instanceof SysUser) {
+            template.binding("CURUSER", (SysUser) principal);
+        }
     }
 }

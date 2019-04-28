@@ -44,13 +44,16 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         // 添加权限
         List<SysUserRole> userRoles = userRoleService.listByUserId(user.getId());
+        List<SysRole> roles = new ArrayList<>();
+
         for (SysUserRole userRole : userRoles) {
             SysRole role = roleService.selectById(userRole.getRoleId());
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
+            roles.add(role);
         }
 
         // 返回UserDetails实现类
+        user.setUserRoles(roles);
 
-        return new User(user.getName(), user.getPassword(), authorities);
+        return user;
     }
 }

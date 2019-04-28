@@ -17,6 +17,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
+    @Autowired
+    private SecurityAuthSuccessHandler securityAuthSuccessHandler;
+
+    @Autowired
+    private SecurityAuthFailedHandler securityAuthFailedHandler;
+
     //密码加密
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -36,14 +42,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                // 如果有允许匿名的url，填在下面
-//                .antMatchers().permitAll()
+                // 如果有允许匿名的url，填在下面（(使用ajax登录时，需把登录页地址配上)）
+                .antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // 设置登陆页
                 .formLogin().loginPage("/login")
-                // 设置登陆成功页
-                .defaultSuccessUrl("/").permitAll()
+                .loginProcessingUrl("/login/dologin")  //登录的请求
+                .successHandler(securityAuthSuccessHandler) //登录成功后逻辑
+                .failureHandler(securityAuthFailedHandler)  //登录失败后逻辑；
+                // 设置登陆成功页(使用ajax登录时，需注释掉)
+//                .defaultSuccessUrl("/index").permitAll()
                 // 自定义登陆用户名和密码参数，默认为username和password
 //                .usernameParameter("username")
 //                .passwordParameter("password")

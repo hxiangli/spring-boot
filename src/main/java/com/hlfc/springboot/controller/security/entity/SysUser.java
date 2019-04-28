@@ -1,8 +1,15 @@
 package com.hlfc.springboot.controller.security.entity;
 
-import java.io.Serializable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-public class SysUser implements Serializable {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public class SysUser implements UserDetails {
     static final long serialVersionUID = 1L;
 
     private Integer id;
@@ -10,6 +17,8 @@ public class SysUser implements Serializable {
     private String name;
 
     private String password;
+
+    List<SysRole> userRoles;
 
     public Integer getId() {
         return id;
@@ -27,11 +36,55 @@ public class SysUser implements Serializable {
         this.name = name;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+
+        for (SysRole role : userRoles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return authorities;
+    }
+
     public String getPassword() {
         return password;
     }
 
+    @Override
+    public String getUsername() {
+        return this.name;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<SysRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<SysRole> userRoles) {
+        this.userRoles = userRoles;
     }
 }
