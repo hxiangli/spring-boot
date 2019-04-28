@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% include("/views/common/head.html",{"title":"登录"}){}%>
+</head>
+<body>
+<h1>登陆</h1>
+<!--<form method="post" action="/login">-->
+    <div>
+        用户名（admin）：<input type="text" name="username">
+    </div>
+    <div>
+        密码(123)：<input type="password" name="password">
+    </div>
+    <div>
+        <button type="submit" onclick="login()">立即登陆</button>
+        <p id="msg"></p>
+    </div>
+
+<!--</form>-->
+</body>
+
+<script>
+
+    debugger;
+    function login() {
+        debugger;
+        var username = $("input[name=username]").val();
+        var password = $("input[name=password]").val();
+        $.ajax({
+            url: webUrl+"/login/dologin",
+            type: "post",
+            data: {
+                "username":username,
+                "password":password,
+
+            },
+            async: false,
+            dataType: 'json',
+            success: function(data){
+                console.log(data);
+                if(data.code=="200"){
+                    window.location.href=webUrl+"/index";
+                } else {
+                    $("#msg").text(data.msg);
+                }
+            }
+        })
+    }
+
+
+</script>
+</html>
