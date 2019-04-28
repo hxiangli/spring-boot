@@ -1,9 +1,9 @@
 server:
   #  端口配置
   port: 9091
-  servlet:
+#  servlet:
 #    项目名称
-    context-path: /spring-boot
+#    context-path: /spring-boot
   tomcat:
     accesslog:
       buffered: true
@@ -33,6 +33,12 @@ spring:
 #mysql
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/security?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://localhost:3306/hlfc?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
+
+
+#开启Mybatis下划线命名转驼峰命名
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
