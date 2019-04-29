@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <% include("/views/common/head.html",{"title":"荷兰风车"}){}%>
 </head>
-<button onclick="window.open('${WEBURL}/nio/socket')">socket</button>
+<h1>登陆成功</h1>用户名：${CURUSER.name}
+<button onclick="window.location.href='/logout'">退出登录</button>
+
+<h1>功能列表</h1>
+<div>
+    <button onclick="window.open('${WEBURL}/nio/socket')">socket</button>
+</div>
 </body>
 </html>

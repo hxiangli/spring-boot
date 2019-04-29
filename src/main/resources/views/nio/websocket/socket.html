@@ -13,10 +13,9 @@
 
 <script type="text/javascript">
     var websocket = null;
-
     //判断当前浏览器是否支持WebSocket
     if('WebSocket' in window){
-        websocket = new WebSocket("ws://localhost:9091/spring-boot/websocket");
+        websocket = new WebSocket("ws://localhost:9091/websocket");
     }
     else{
         alert('Not support websocket')

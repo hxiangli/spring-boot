@@ -15,7 +15,7 @@ public class IndexController {
     public String showHome() {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         System.out.println("当前登录用户"+name);
-        return "login/home";
+        return "index";
     }
 
 }
