@@ -29,19 +29,17 @@ public class BeetlGlobalExt implements WebRenderExt {
         //项目URL
         template.binding("WEBURL", url);
 
+
+        //当前登录用户
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-
         if(authentication ==null){
             return ;
         }
-
         Object principal =  authentication.getPrincipal();
         if (principal == null) {
             return ;
         }
 
-        //当前用户
         if (principal instanceof SysUser) {
             template.binding("CURUSER", (SysUser) principal);
         }
