@@ -54,7 +54,7 @@ public class HTest {
 //        this.opsForSet(m, m2);
 
         //zset
-//        this.opsForZSet(m,m2);
+        this.opsForZSet(m,m2);
 
     }
 
@@ -140,7 +140,7 @@ public class HTest {
     }
 
     /**
-     * 有序 zset
+     * 有序 zset（也不能重复）
      */
     public void opsForZSet(RedisModel m, RedisModel m2) {
 
