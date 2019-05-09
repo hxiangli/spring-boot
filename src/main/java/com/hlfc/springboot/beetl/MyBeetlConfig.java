@@ -1,5 +1,6 @@
 package com.hlfc.springboot.beetl;
 
+import org.beetl.core.resource.ClasspathResourceLoader;
 import org.beetl.core.resource.WebAppResourceLoader;
 import org.beetl.ext.spring.BeetlGroupUtilConfiguration;
 import org.beetl.ext.spring.BeetlSpringViewResolver;
@@ -25,14 +26,18 @@ public class MyBeetlConfig {
 	public BeetlGroupUtilConfiguration getBeetlGroupUtilConfiguration() {
 		BeetlGroupUtilConfiguration beetlGroupUtilConfiguration = new BeetlGroupUtilConfiguration();
 		ResourcePatternResolver patternResolver = ResourcePatternUtils.getResourcePatternResolver(new DefaultResourceLoader());
-		try {
+//		try {
 			// WebAppResourceLoader 配置root路径是关键
-			WebAppResourceLoader webAppResourceLoader =
-					new WebAppResourceLoader(patternResolver.getResource("classpath:/").getFile().getPath());
-			beetlGroupUtilConfiguration.setResourceLoader(webAppResourceLoader);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//			WebAppResourceLoader webAppResourceLoader =
+//					new WebAppResourceLoader(patternResolver.getResource("classpath:/").getFile().getPath());
+
+		//使用classPathLoader方式配置，不然jar启动会报错
+			ClasspathResourceLoader classPathLoader = new ClasspathResourceLoader(this.getClass().getClassLoader(),
+					"/");
+			beetlGroupUtilConfiguration.setResourceLoader(classPathLoader);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		//读取配置文件信息
 		return beetlGroupUtilConfiguration;
 	}
