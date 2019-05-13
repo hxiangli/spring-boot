@@ -1,10 +1,14 @@
-package com.hlfc.springboot.controller.security.entity;
+package com.hlfc.springboot.db.mybatisplus.entity;
+
+import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class SysRole implements Serializable {
     static final long serialVersionUID = 1L;
 
+    @TableId("id")
     private Integer id;
 
     private String name;

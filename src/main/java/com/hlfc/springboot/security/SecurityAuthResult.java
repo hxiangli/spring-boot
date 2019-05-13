@@ -1,4 +1,4 @@
-package com.hlfc.springboot.controller.security;
+package com.hlfc.springboot.security;
 
 /**
  * 描述

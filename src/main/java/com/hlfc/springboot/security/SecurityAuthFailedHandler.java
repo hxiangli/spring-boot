@@ -1,4 +1,4 @@
-package com.hlfc.springboot.controller.security;
+package com.hlfc.springboot.security;
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.security.core.AuthenticationException;

@@ -1,21 +1,18 @@
-package com.hlfc.springboot.controller.security;
+package com.hlfc.springboot.security;
 
-import com.hlfc.springboot.controller.security.entity.SysRole;
-import com.hlfc.springboot.controller.security.entity.SysUser;
-import com.hlfc.springboot.controller.security.entity.SysUserRole;
-import com.hlfc.springboot.controller.security.service.SysRoleService;
-import com.hlfc.springboot.controller.security.service.SysUserRoleService;
-import com.hlfc.springboot.controller.security.service.SysUserService;
+import com.hlfc.springboot.db.mybatisplus.entity.SysRole;
+import com.hlfc.springboot.db.mybatisplus.entity.SysUser;
+import com.hlfc.springboot.db.mybatisplus.entity.SysUserRole;
+import com.hlfc.springboot.db.mybatisplus.services.SysRoleService;
+import com.hlfc.springboot.db.mybatisplus.services.SysUserRoleService;
+import com.hlfc.springboot.db.mybatisplus.services.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

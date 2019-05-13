@@ -1,4 +1,4 @@
-package com.hlfc.springboot.controller.security;
+package com.hlfc.springboot.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
 package com.hlfc.springboot.beetl;
 
-import com.hlfc.springboot.controller.security.entity.SysUser;
+import com.hlfc.springboot.db.mybatisplus.entity.SysUser;
 import org.beetl.core.GroupTemplate;
 import org.beetl.core.Template;
 import org.beetl.ext.web.WebRenderExt;

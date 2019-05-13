@@ -1,7 +1,7 @@
-package com.hlfc.springboot.controller.security;
+package com.hlfc.springboot.security;
 
 import com.alibaba.fastjson.JSON;
-import com.hlfc.springboot.controller.security.entity.SysUser;
+import com.hlfc.springboot.db.mybatisplus.entity.SysUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
