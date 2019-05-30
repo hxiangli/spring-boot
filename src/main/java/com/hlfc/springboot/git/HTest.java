@@ -12,4 +12,7 @@ public class HTest {
     //测分支test02试
     private String b;
 
+    //测分支test02试
+    private String c;
+
 }
