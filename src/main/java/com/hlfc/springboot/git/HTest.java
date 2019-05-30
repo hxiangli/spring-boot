@@ -9,5 +9,5 @@ package com.hlfc.springboot.git;
  */
 public class HTest {
 
-   private String a;
+   private String a;//master 分支
 }
