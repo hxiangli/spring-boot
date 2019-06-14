@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 封装返回页面的结果对象
  * @author hxl
- * @param  返回对象类型
+ * @param
  */
 public class ResponseResult implements Serializable {
 

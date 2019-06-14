@@ -22,12 +22,22 @@ public class RestfulController {
     }
 
 
+    //---------以下测试 com.hlfc.springboot.http.client.HTest
 
     //post
     //application/json
     @RequestMapping(value = "/postjson",method = {RequestMethod.POST})
-    public ResponseResult postjson(@RequestBody Map map){
+    public ResponseResult postjson(@RequestBody Map map,String key){
 
         return  new ResponseResult(map);
+    }
+
+
+    //post
+    //application/x-www-form-urlencoded
+    @RequestMapping(value = "/postform",method = {RequestMethod.POST})
+    public ResponseResult postform(String id,String key){
+
+        return  new ResponseResult(id);
     }
 }

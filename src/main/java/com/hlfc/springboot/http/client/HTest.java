@@ -31,7 +31,7 @@ public class HTest {
     @Test
     public void test() {
 
-       String url = "http://127.0.0.1:9091/rest/postjson";
+       String url = "http://127.0.0.1:9091/rest/postjson?key=1";
         // 封装参数，千万不要替换为Map与HashMap，否则参数无法传递
         //map
         MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<String, Object>();
@@ -55,6 +55,13 @@ public class HTest {
         // 1、使用postForObject请求接口
         String result = template.postForObject(url, entity, String.class);
         System.out.println("result1==================" + result);
+
+        url = "http://127.0.0.1:9091/rest/postform?key=1";
+        MediaType formtype = MediaType.parseMediaType("application/x-www-form-urlencoded; charset=UTF-8");
+        headers.setContentType(formtype);
+        HttpEntity<MultiValueMap> entityform = new HttpEntity<MultiValueMap>(paramMap,headers);
+        String resultform = template.postForObject(url, entityform, String.class);
+        System.out.println("resultform1==================" + resultform);
 
 //        // 2、使用postForEntity请求接口
 //        HttpHeaders headers = new HttpHeaders();
