@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% include("/views/common/head.html",{"title":"打印"}){}%>
+</head>
+
+<style>
+
+    /*ie下不生效*/
+    /*css @page规则控制打印设置选项*/
+    /*http://www.softwhy.com/article-5613-1.html*/
+
+    /**
+    * 打印设置打印的上下边距
+    **/
+    @media print {
+        @page{
+            margin: 10mm 0mm;
+        }
+    }
+
+</style>
+<body>
+
+<button onclick="window.open('${WEBURL}/print/lodop/PrintSampIndex.html')">lodop打印方式</button>
+<button onclick="browserprint()">网页打印方式</button>
+
+<h1>这块内容不需要打印</h1>
+<!--startprint-->
+<div id="content">
+    这是打印内容！！
+</div>
+<!--endprint-->
+<h1>这块内容不需要打印</h1>
+</body>
+
+<script>
+
+
+function browserprint() {
+
+    //ie
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //是否ie
+        remove_ie_header_and_footer();
+        //设置页边距（默认采用编辑器边距，无需再设置）
+        setPrintPageSetUp();
+    }
+
+  //设置打印区域
+    var bdhtml=window.document.body.innerHTML;
+    var sprnstr="<!--startprint-->";
+    var eprnstr="<!--endprint-->";
+    var prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17);
+    var prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));
+    window.document.body.innerHTML=prnhtml;
+    window.print();
+    //还原
+    window.document.body.innerHTML=bdhtml;
+}
+
+
+//ie打印的页面设置（页边距）
+function  setPrintPageSetUp(){
+    var hkey_path = "HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\PageSetup\\";
+    try {
+        var RegWsh = new ActiveXObject("WScript.Shell");
+
+
+        //设置页边距（mm单位）
+        var hkey_key="margin_bottom";//下边距
+        RegWsh.RegWrite(hkey_path+hkey_key,"0.6");
+
+        hkey_key="margin_left";//左边距
+        RegWsh.RegWrite(hkey_path+hkey_key,"");
+
+        hkey_key="margin_right";  //右边距
+        RegWsh.RegWrite(hkey_path+hkey_key,"");
+
+        hkey_key="margin_top";   //上边距
+        RegWsh.RegWrite(hkey_path+hkey_key,"0.6");
+
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+
+//ie打印删除页眉，页脚
+function remove_ie_header_and_footer() {
+    var hkey_path;
+    hkey_path = "HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\PageSetup\\";
+    try {
+        var RegWsh = new ActiveXObject("WScript.Shell");
+        RegWsh.RegWrite(hkey_path + "header", "");
+        RegWsh.RegWrite(hkey_path + "footer", "");
+    } catch (e) {
+        console.log(e);
+    }
+}
+</script>
+</html>
