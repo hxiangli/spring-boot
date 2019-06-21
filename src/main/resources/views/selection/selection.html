@@ -1,0 +1,55 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <title>selection</title>
+</head>
+<body>
+<!--// 插入指定元素到指定位置-->
+<p>点击插入至鼠标位置(多选显示选中内容)</p>
+<p id="p1" contenteditable="true" onclick="insertMourse()"><b>Hello<span style="color: red">你好</span></b>World</p>
+<input type="button" value="插入至固定偏移位置" onclick="insertSpan()" />
+
+</body>
+<script>
+
+    // 插入固定位置
+    function insertSpan() {
+
+        debugger;
+        var oP1 = document.getElementById("p1");
+        var oHello = oP1.firstChild.firstChild;
+        var oWorld = oP1.lastChild;
+        var oRange = document.createRange();
+        var oSpan = document.createElement("span");
+        oSpan.style.color = "red";
+        oSpan.appendChild(document.createTextNode("Inserted text"));
+
+        oRange.setStart(oHello, 1);
+        oRange.setEnd(oWorld, 3);
+        oRange.insertNode(oSpan);
+    }
+
+
+    //插入至鼠标位置
+    function insertMourse() {
+
+       //获取鼠标位置
+        var selection  = document.getSelection();
+        var rang = selection.getRangeAt(0);
+        alert("选中内容："+rang.toString());
+
+        alert("开始文本："+rang.startContainer.textContent);
+        alert("偏移度："+rang.startOffset);
+
+        alert("结束文本："+rang.endContainer.textContent);
+        alert("偏移度："+rang.endOffset);
+
+        var oSpan = document.createElement("span");
+        oSpan.style.color = "red";
+        oSpan.appendChild(document.createTextNode("鼠标插入"));
+        rang.insertNode(oSpan);
+    }
+</script>
+</html>
