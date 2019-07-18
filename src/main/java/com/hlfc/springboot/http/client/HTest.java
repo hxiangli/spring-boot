@@ -32,17 +32,16 @@ public class HTest {
     public void test() {
 
        String url = "http://127.0.0.1:9091/rest/postjson?key=1";
-        // 封装参数，千万不要替换为Map与HashMap，否则参数无法传递
-        //map
+        //map 方式封装 不要替换为Map与HashMap，否则参数无法传递
         MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<String, Object>();
         paramMap.add("id", "20180416");
 
-        //string
+        //string 方式
 //        String json = "{\"id\":\"123\"}";
 
         //头部
         HttpHeaders headers = new HttpHeaders();
-        //数据类型
+        //数据类型 json
         MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
         headers.setContentType(type);
 
@@ -57,6 +56,8 @@ public class HTest {
         System.out.println("result1==================" + result);
 
         url = "http://127.0.0.1:9091/rest/postform?key=1";
+
+        //表单提交方式
         MediaType formtype = MediaType.parseMediaType("application/x-www-form-urlencoded; charset=UTF-8");
         headers.setContentType(formtype);
         HttpEntity<MultiValueMap> entityform = new HttpEntity<MultiValueMap>(paramMap,headers);

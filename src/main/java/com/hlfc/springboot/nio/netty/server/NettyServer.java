@@ -26,11 +26,11 @@ public class NettyServer {
 
     private static final Logger LOG = LoggerFactory.getLogger(NettyServer.class);
 
-    private Integer nettyPort = 9999;
+    private Integer nettyPort = 9988;
 
     private String channelId;
 
-
+    //自启动
     @PostConstruct
     public void init(){
         bind(nettyPort);

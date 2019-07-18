@@ -11,11 +11,21 @@ server:
 #   templatesPath: /views/
 #   suffix: html  此种方式controll 地址必须加入html，不采用
 
-#reids
 spring:
+  #reids
   redis:
     host: 127.0.0.1
     port: 6379
+
+  #mongodb
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: test
+    #集群
+    #spring.data.mongodb.uri=mongodb://user:pwd@ip1:port1,ip2:port2/database
+    #spring.data.mongodb.uri=mongodb://name:pass@localhost:27017/test
 
 
 #mysql

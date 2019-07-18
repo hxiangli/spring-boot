@@ -22,7 +22,7 @@ public class RestfulController {
     }
 
 
-    //---------以下测试 com.hlfc.springboot.http.client.HTest
+    //---------以下测试来自 com.hlfc.springboot.http.client.HTest
 
     //post
     //application/json
