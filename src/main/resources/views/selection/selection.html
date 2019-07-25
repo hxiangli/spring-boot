@@ -10,7 +10,11 @@
 <p>点击插入至鼠标位置(多选显示选中内容)</p>
 <p id="p1" contenteditable="true" onclick="insertMourse()"><b>Hello<span style="color: red">你好</span></b>World</p>
 <input type="button" value="插入至固定偏移位置" onclick="insertSpan()" />
-
+<br><br><br>
+<p>点击控制鼠标</p>
+<p id="p2" contenteditable="true" ><b>Hello<span style="color: red">你好</span></b>World</p>
+<input type="button" value="控制光标位置（world前面）" onclick="setMourse()" />
+<input type="button" value="控制选中hello" onclick="setMourseSel()" />
 </body>
 <script>
 
@@ -50,6 +54,52 @@
         oSpan.style.color = "red";
         oSpan.appendChild(document.createTextNode("鼠标插入"));
         rang.insertNode(oSpan);
+    }
+    
+    
+
+    //设置光标位置
+    function setMourse(ctrl){
+
+        // var ctrl = document.getElementById("p2");
+//----------------只适用于TEXTAREA 等文本域----------------//
+        // if(ctrl.setSelectionRange)
+        // {
+        //     ctrl.focus();
+        //     ctrl.setSelectionRange(1,1);
+        // }
+        // else if (ctrl.createTextRange) {
+        //     var range = ctrl.createTextRange();
+        //     range.collapse(true);
+        //     range.moveEnd('character', pos);
+        //     range.moveStart('character', pos);
+        //     range.select();
+        // }
+
+//---------------------------------------------------------//
+        //选中 hello 文本
+        var sel = document.getSelection();
+        var range = document.createRange();
+        var oP1 = document.getElementById("p2");
+
+        //光标停在 world 前面
+        var oWorld = oP1.lastChild;
+        sel.removeAllRanges();
+        range.setStartBefore(oWorld);
+        range.collapse(true);
+        sel.addRange(range);
+    }
+
+
+    //鼠标选中
+    function  setMourseSel(){
+        var sel = document.getSelection();
+        var range = document.createRange();
+        var oP1 = document.getElementById("p2");
+        var oHello = oP1.firstChild.firstChild;
+        range.selectNode(oHello);
+        sel.removeAllRanges();
+        sel.addRange(range);
     }
 </script>
 </html>
