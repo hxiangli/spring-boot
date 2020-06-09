@@ -12,9 +12,11 @@
 <input type="button" value="插入至固定偏移位置" onclick="insertSpan()" />
 <br><br><br>
 <p>点击控制鼠标</p>
-<p id="p2" contenteditable="true" ><b>Hello<span style="color: red">你好</span></b>World</p>
-<input type="button" value="控制光标位置（world前面）" onclick="setMourse()" />
+<p id="p2" contenteditable="true" ><b>Hello<span style="color: red">你好</span></b>Worl<span style="color: red">d</span>haha</p>
+<input type="button" value="控制光标位置（最后一个节点前）" onclick="setMourse()" />
 <input type="button" value="控制选中hello" onclick="setMourseSel()" />
+<input type="button" value="通过range获取最后一个字符串的样式" onclick="getlastStrstyle()" />
+<input type="button" name="btnMove" value="移动" onclick="moveCursor()"/>
 </body>
 <script>
 
@@ -41,6 +43,7 @@
 
        //获取鼠标位置
         var selection  = document.getSelection();
+        // var selection = window.getSelection();
         var rang = selection.getRangeAt(0);
         alert("选中内容："+rang.toString());
 
@@ -77,14 +80,14 @@
         // }
 
 //---------------------------------------------------------//
-        //选中 hello 文本
         var sel = document.getSelection();
         var range = document.createRange();
         var oP1 = document.getElementById("p2");
 
-        //光标停在 world 前面
+        //光标停在 d 前面
         var oWorld = oP1.lastChild;
         sel.removeAllRanges();
+        // range.setStart(oWorld,1);
         range.setStartBefore(oWorld);
         range.collapse(true);
         sel.addRange(range);
@@ -101,5 +104,29 @@
         sel.removeAllRanges();
         sel.addRange(range);
     }
+
+    //获取最后一个字符串样式
+    function  getlastStrstyle(){
+        var sel = document.getSelection();
+        var range = document.createRange();
+        var oP1 = document.getElementById("p2");
+
+        //光标停在 world 中间
+        var oWorld = oP1.lastChild;
+        sel.removeAllRanges();
+        range.setStartAfter(oP1);
+        range.moveEnd("character",-1);
+        debugger;
+        // sel.addRange(range);
+    }
+
+    function moveCursor()
+    {
+        var temp = document.getElementsByName("txtNum").values();
+        var rng = document.getElementsByName("txtTest").createTextRange();
+        rng.move("character",temp);
+        rng.select();
+    }
+
 </script>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--测试form表单提交方式时，使用ajax捕捉跳转。-->
+<!--结论：form表单提交（action=***）方式时 后台302可以重定向 ;401 页面直接空白显示401
+    ajax 提交时  后台302无法重定向，且无法捕捉，只能定位到重定向后的200页面html ;401 可以捕捉
+-->
+<html lang="en">
+<head>
+    <% include("/views/common/head.html",{"title":"form表单测试"}){}%>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/formsubmit/">
+<div>
+    用户名（admin）：<input type="text" name="username">
+</div>
+<div>
+    密码(123)：<input type="password" name="password">
+</div>
+<div>
+    <button type="submit" >立即登陆</button>
+    <p id="msg"></p>
+</div>
+</form>
+</body>
+<script>
+
+    function login() {
+        debugger;
+        var username = $("input[name=username]").val();
+        var password = $("input[name=password]").val();
+        $.ajax({
+            url: webUrl+"/formsubmit",
+            type: "post",
+            data: {
+                "username":username,
+                "password":password,
+
+            },
+            async: false,
+            dataType: 'json',
+            success: function(data){
+                console.log(data);
+                if(data.code=="200"){
+                    window.location.href=webUrl+"/index";
+                } else {
+                    $("#msg").text(data.msg);
+                }
+            },error: function (jqXHR, textStatus, errorThrown) {
+                if (jqXHR.status == 401) {
+                    alert("认证失败");
+                     window.location.href = "/formsubmit/formsubmit.html";
+                }
+                if (jqXHR.status == 302) {//无法捕捉
+                    alert("需要进行重定向");
+                    // window.location.href = "/formsubmit/formsubmit.html";
+                }
+            }
+        })
+    }
+</script>
+</html>
