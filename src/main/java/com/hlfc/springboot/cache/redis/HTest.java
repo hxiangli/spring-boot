@@ -67,7 +67,7 @@ public class HTest {
         redisTemplate.opsForHash().put("hashK", m2.getRedisKey(), m2);
 
 
-        RedisModel value = (RedisModel) redisTemplate.opsForHash().get("TEST_REDIS_KEY", m2.getRedisKey());
+        RedisModel value = (RedisModel) redisTemplate.opsForHash().get("hashK", m2.getRedisKey());
 
         System.out.println("map---------------" + value.getName());
     }
