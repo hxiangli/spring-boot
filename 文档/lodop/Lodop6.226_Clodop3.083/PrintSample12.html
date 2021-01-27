@@ -23,11 +23,11 @@
 hh:mm:ss)<br>
 <font color="#0000FF">◆ LODOP.GET_PRINT_INIFFNAME(strPrintTaskName)</font>获得“打印维护”的配置文件名</p>                              
 <h3><font color="#009999">功能演示如下：</font></h3>                                
-<p>●<input type="button" value="读文件:" id="B3"  onclick="document.getElementById('doc1').value=readfile(document.getElementById('T1').value,document.getElementById('doc1'))"><input type="text" id="T1" size="20" value="C:\test.xml">的内容如下：</p>
+<p>●<input type="button" value="读文件:" id="B3"  onclick="document.getElementById('doc1').value=readfile(document.getElementById('T1').value,document.getElementById('doc1'))"><input type="text" id="T1" size="20" value="C:\hlfc.xml">的内容如下：</p>
 <p><textarea rows="4" id="doc1" cols="52" ></textarea></p>
 
 <p>●以上内容<input type="button" value="写入文件A：" id="B3"  onclick="writefile(0,document.getElementById('T2').value,document.getElementById('doc1').value)">
-<input type="text" id="T2" size="18" value="C:\test.xml">
+<input type="text" id="T2" size="18" value="C:\hlfc.xml">
 <input type="button" value="<<把以上内容追加到文件" id="B4"  onclick="writefile(1,document.getElementById('T2').value,document.getElementById('doc1').value)">
 </p> 
 <p>●以上内容用
@@ -46,9 +46,9 @@ hh:mm:ss)<br>
 <input type="text" id="T2A" size="18" value="C:\test_encode.xml">
 </p> 
 <p>●本页面所有内容<input type="button" value="写入Word文档：" id="B51"  onclick="writefile('UTF-8',document.getElementById('T2B').value,document.documentElement.innerHTML)">
-<input type="text" id="T2B" size="18" value="C:\test.doc">
+<input type="text" id="T2B" size="18" value="C:\hlfc.doc">
 <input type="button" value="或写入Excel文件：" id="B52"  onclick="writefile('UTF-8',document.getElementById('T2C').value,document.documentElement.innerHTML)">
-<input type="text" id="T2C" size="18" value="C:\test.xls">
+<input type="text" id="T2C" size="18" value="C:\hlfc.xls">
 </p> 
 <p>●<input type="button" value="判断该文件A是否存在" id="B6"  onclick="isfileExist(document.getElementById('T2').value)">
 <input type="button" value="查看该文件的最后时间:" id="B5"  onclick="document.getElementById('T3').value=readfileTime(document.getElementById('T2').value,document.getElementById('T3'))"><input type="text" id="T3" size="48">  
