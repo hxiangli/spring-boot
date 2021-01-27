@@ -11,7 +11,7 @@ public class SpringbootApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		int a= 113322;
+		int a= 11;
 	}
 
 }
