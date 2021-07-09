@@ -2,7 +2,7 @@ server:
   #  端口配置
   port: 9091
 #  servlet:
-#    项目名称
+#    项目名称11
 #    context-path: /spring-boot
   tomcat:
     accesslog:
