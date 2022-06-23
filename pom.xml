@@ -123,11 +123,39 @@
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 
-		<!--excel导入11-->
+		<!--excel导入-->
 		<!--<dependency>-->
 			<!--<groupId>com.alibaba</groupId>-->
 			<!--<artifactId>easyexcel</artifactId>-->
 		<!--</dependency>-->
+
+
+		<!--java cv-->
+		<!--<dependency>-->
+			<!--<groupId>org.bytedeco</groupId>-->
+			<!--<artifactId>ffmpeg-platform</artifactId>-->
+			<!--<version>4.2.2-1.5.3</version>-->
+		<!--</dependency>-->
+
+
+		<dependency>
+		   <groupId>org.bytedeco</groupId>
+		   <artifactId>javacv</artifactId>
+		   <version>1.5.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.bytedeco</groupId>
+			<artifactId>ffmpeg-platform</artifactId>
+			<version>5.0-1.5.7</version>
+		</dependency>
+
+		<!--jave  微信语音转 mp3-->
+		<dependency>
+			<groupId>com.github.dadiyang</groupId>
+			<artifactId>jave</artifactId>
+			<version>1.0.5</version>
+		</dependency>
 
 	</dependencies>
 
