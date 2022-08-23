@@ -88,10 +88,8 @@ public class VideoUtil
 
 			System.out.printf("视频宽度[%d]，视频高度[%d]，音频通道数[%d]\r\n", frameWidth, frameHeight, audiochannels);
 
-			ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
 
 			recorder = new FFmpegFrameRecorder(outputfile, frameWidth, frameHeight, audiochannels);
-//			recorder = new FFmpegFrameRecorder(arrayOutputStream, frameWidth, frameHeight, audiochannels);
 			recorder.setVideoCodec(avcodec.AV_CODEC_ID_H264);
 
 			recorder.setFormat(format);
