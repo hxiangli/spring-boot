@@ -1,11 +1,6 @@
 package com.hlfc.springboot.javacv;
 
-import freemarker.template.utility.DateUtil;
-import sun.util.resources.LocaleData;
-
-import java.awt.*;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * 测试类q

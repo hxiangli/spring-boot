@@ -20,18 +20,18 @@ spring:
   #mongodb
   data:
     mongodb:
-      host: localhost
+      host: 192.168.3.121
       port: 27017
       database: test
     #集群
     #spring.data.mongodb.uri=mongodb://user:pwd@ip1:port1,ip2:port2/database
-    #spring.data.mongodb.uri=mongodb://name:pass@localhost:27017/test
+    #spring.data.mongodb.uri=mongodb://name:pass@192.168.3.121:27017/test
 
 
 #mysql
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/hlfc?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://192.168.3.121:3306/hlfc?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
 

@@ -157,6 +157,11 @@
 			<version>1.0.5</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
 	</dependencies>
 
 
@@ -205,6 +210,54 @@
 		</plugins>
 
 	</build>
+
+	<profiles>
+		<profile>
+			<id>physical</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jar-plugin</artifactId>
+						<configuration>
+							<archive>
+								<!-- 生成的jar中，不要包含pom.xml和pom.properties这两个文件 -->
+								<addMavenDescriptor>false</addMavenDescriptor>
+							</archive>
+							<!-- 过滤掉不希望包含在jar中的文件 -->
+							<excludes>
+								<exclude>application.yml</exclude>
+								<exclude>log4j2.xml</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+
+					<!--<plugin>-->
+						<!--<groupId>org.apache.maven.plugins</groupId>-->
+						<!--<artifactId>maven-assembly-plugin</artifactId>-->
+						<!--<configuration>-->
+							<!--&lt;!&ndash; Specifies the configuration file of the assembly plugin &ndash;&gt;-->
+							<!--<descriptors>-->
+								<!--<descriptor>assembly/package-physical.xml</descriptor>-->
+							<!--</descriptors>-->
+						<!--</configuration>-->
+						<!--<executions>-->
+							<!--<execution>-->
+								<!--<id>make-assembly</id>-->
+								<!--<phase>package</phase>-->
+								<!--<goals>-->
+									<!--<goal>single</goal>-->
+								<!--</goals>-->
+							<!--</execution>-->
+						<!--</executions>-->
+					<!--</plugin>-->
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 
 </project>
