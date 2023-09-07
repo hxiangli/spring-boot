@@ -1,7 +1,5 @@
 package com.hlfc.springboot.controller;
 
-import net.evecom.scplatform.filestorage.service.FileStorageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
