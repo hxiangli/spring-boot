@@ -1,4 +1,5 @@
-package com.hlfc.springboot.controller.test;
+package com.hlfc.springboot.other.highCpu;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

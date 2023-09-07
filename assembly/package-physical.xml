@@ -1,0 +1,59 @@
+<assembly>
+    <id>physical</id>
+	<!-- 最终打包成一个用于发布的压缩包文件 -->
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+
+	<!-- Adds dependencies to package under lib directory -->
+	<!--<dependencySets>
+		<dependencySet>
+			&lt;!&ndash; 不使用项目的artifact，第三方jar不要解压，打包进压缩包lib目录 &ndash;&gt;
+			<useProjectArtifact>false</useProjectArtifact>
+			<outputDirectory>lib</outputDirectory>
+			<unpack>false</unpack>
+		</dependencySet>
+	</dependencySets>-->
+
+	<fileSets>
+		<!-- 把项目相关的说明文件，打包进压缩文件根目录 -->
+		<fileSet>
+			<directory>${project.basedir}</directory>
+			<outputDirectory></outputDirectory>
+			<includes>
+				<include>README*</include>
+				<include>LICENSE*</include>
+				<include>NOTICE*</include>
+			</includes>
+		</fileSet>
+
+
+		<!-- 把项目的配置文件，打包进压缩文件conf目录 -->
+		<fileSet>
+		    <directory>${project.basedir}/src/main/resources</directory>
+		    <outputDirectory>config</outputDirectory>
+		    <includes>
+				<include>bootstrap.properties</include>
+		    </includes>
+		</fileSet>
+		<!-- 把项目的脚本文件目录（ src/main/scripts ）中的启动脚本，打包进压缩文件根目录 -->
+		<fileSet>
+			<directory>${project.basedir}/src/main/scripts</directory>
+			<outputDirectory></outputDirectory>
+			<fileMode>0755</fileMode>
+			<includes>
+				<include>startup.*</include>
+				<include>version.*</include>
+			</includes>
+		</fileSet>
+
+		<!-- 把项目自己编译出来的jar文件，打包进压缩文件lib目录 -->
+		<fileSet>
+			<directory>${project.build.directory}</directory>
+			<outputDirectory></outputDirectory>
+			<includes>
+				<include>${project.name}.jar</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+</assembly>

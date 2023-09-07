@@ -1,4 +1,4 @@
-package com.hlfc.springboot.controller.test;
+package com.hlfc.springboot.other.highCpu;
 
 import java.util.ArrayList;
 import java.util.List;

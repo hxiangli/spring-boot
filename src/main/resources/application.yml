@@ -14,10 +14,17 @@ server:
 spring:
   #reids
   redis:
+    enabled: false
     host: 127.0.0.1
     port: 6379
 
   #mongodb
+  mongodb:
+    enable-auto-configuration: false
+  mongo:
+    # 禁用启动时检查
+    validation:
+      enabled: false
   data:
     mongodb:
       host: 192.168.3.121
@@ -31,13 +38,14 @@ spring:
 #mysql
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.3.121:3306/hlfc?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://192.168.190.129:3306/hlfc?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
 
   #kafka
   # 指定kafka 代理地址，可以多个
   kafka:
+    enabled: false
     bootstrap-servers: 192.168.47.130:9092,192.168.47.131:9092,192.168.47.132:9092
     # 指定默认消费者group id
     consumer:

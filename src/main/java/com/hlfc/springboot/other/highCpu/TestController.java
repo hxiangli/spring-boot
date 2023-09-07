@@ -1,4 +1,4 @@
-package com.hlfc.springboot.controller.test;
+package com.hlfc.springboot.other.highCpu;
 
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
@@ -17,6 +17,6 @@ public class TestController {
     public void test(){
         log.info("===测试001");
 //        HighCpuTest.test();
-        TestJvmOOM.test();
+        HighCpuTest.test();
     }
 }
