@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class IndexController {
     /**
-     * 登录成功页11
+     * 登录成功页
      * @return
      */
     @RequestMapping("/index")
